@@ -9,7 +9,7 @@
 
 <h1>👩‍💼 مدام عفاف | Madam Afaf</h1>
 
-<a href="https://git.io/typing-svg"><img src="https://readme-typing-svg.demolab.com?font=JetBrains+Mono&weight=700&size=28&duration=3000&pause=800&color=FACC15&center=true&vCenter=true&multiline=false&repeat=true&width=900&height=60&lines=مدام+عفاف+%7C+Madam+Afaf;AI-Powered+Egyptian+Citizen+Services+Assistant;Web+Scraping+%E2%86%92+RAG+%E2%86%92+NileChat-3B+%E2%86%92+Streamlit;الموظفة+اللي+مش+هتقولك+فوت+علينا+بكرة!+%F0%9F%98%89" alt="Typing SVG" /></a>
+[![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&weight=200&size=25&pause=1004&color=F72A2A&width=435&lines=Your+AI+Assistant+for+Egyptians;+%D8%A7%D8%B3%D8%A3%D9%84%D9%87%D8%A7+%D8%B9%D9%86+%D8%A7%D9%84%D8%AE%D8%AF%D9%85%D8%A7%D8%AA+%D8%A7%D9%84%D8%AD%D9%83%D9%88%D9%85%D9%8A%D8%A9+%D9%81%D9%8A+%D9%85%D8%B5%D8%B1;+%D9%85%D8%B4+%D9%87%D8%AA%D9%82%D9%88%D9%84%D9%83+%D9%81%D9%88%D8%AA+%D8%B9%D9%84%D9%8A%D9%86%D8%A7+%D8%A8%D9%83%D8%B1%D8%A9+%F0%9F%98%89)](https://git.io/typing-svg)
 
 <br/>
 
@@ -356,19 +356,41 @@ vectorstore = FAISS.from_documents(chunks, embedding_model)
 ## Step 3 — RAG + LLM Inference
 
 ### Prompt Template
-
 ```
-أنت مساعد لخدمات المواطنين في مصر.
+أنت مساعد لخدمات المواطنين في مصر. أجب عن سؤال المستخدم اعتمادًا على السياق فقط، باللهجة المصرية البسيطة، ولا تضف أي معلومة غير موجودة في السياق.
+استخدم الخدمة المطابقة لسؤال المستخدم فقط، وأجب عن المعلومة التي يسأل عنها بالتحديد (المستندات، الرسوم، المدة، الخطوات، الشروط، أو وصف الخدمة).
+إذا كانت الإجابة عدة بنود فاذكرها كلها كاملة، كل بند في سطر يبدأ بـ "-".
+حافظ على أسماء المستندات والأرقام والمبالغ كما وردت في السياق.
+إذا لم توجد الإجابة في السياق اكتب: المعلومة غير موجودة في المصادر المتاحة.
 
-أجب عن سؤال المستخدم اعتمادًا على السياق فقط.
+مثال 1 (للشكل فقط):
+السياق:
+اسم الخدمة: تجديد رخصة قيادة
+المستندات المطلوبة:
+- الرخصة القديمة
+- شهادة طبية
+- صورة البطاقة
+السؤال:
+عايز اجدد رخصة القيادة محتاج ايه؟
+الإجابة:
+علشان تجدد رخصة القيادة هتحتاج:
+- الرخصة القديمة
+- شهادة طبية
+- صورة البطاقة
 
-القواعد:
-- إذا كان السؤال عن المستندات المطلوبة، اذكر المستندات المطلوبة فقط.
-- لا تذكر مراكز أو أماكن تقديم الخدمة.
-- لا تضف أي معلومة غير موجودة في السياق.
-- حافظ على أسماء المستندات كما وردت في المصدر.
-- إذا لم توجد الإجابة في السياق، اكتب: المعلومة غير موجودة في المصادر المتاحة.
-- أجب باللهجة المصرية البسيطة.
+مثال 2 (للشكل فقط):
+السياق:
+اسم الخدمة: استخراج شهادة قيد
+الرسوم المقررة للطلب:
+100 جنيه
+التوقيت المحدد لإنهاء الخدمة:
+خلال 5 أيام
+السؤال:
+الخدمة دي بكام وبتخلص امتى؟
+الإجابة:
+رسوم الخدمة 100 جنيه، وبتخلص خلال 5 أيام.
+
+الآن أجب عن السؤال التالي بنفس الطريقة.
 
 السياق:
 {context}
@@ -455,7 +477,7 @@ response = requests.post(
 Final Project/
 │
 ├── Main Notebook/
-│   └── citizen-services-rag-prototype.ipynb   # Kaggle notebook — full backend pipeline
+│   └── citizen-services-rag-ngrok.ipynb        # Kaggle notebook — full backend pipeline
 │       ├── ## Libraries                        # pip installs + imports
 │       ├── ## LLM Model                        # NileChat-3B load (HuggingFace login)
 │       ├── ## Web Scraping                     # 3 scrapers: Khadamat, MOI, MSIT
@@ -511,240 +533,6 @@ requests beautifulsoup4
 ```
 
 <p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-# ⚙️ Installation & Setup
-
-## 1 — Clone the Repository
-
-```bash
-git clone https://github.com/<your-username>/madam-afaf.git
-cd madam-afaf
-```
-
-## 2 — Setup Kaggle Notebook
-
-1. افتح [Kaggle](https://www.kaggle.com) وسجل دخول
-2. ارفع `citizen-services-rag-prototype.ipynb` كـ new notebook
-3. فعّل **GPU** من Settings → Accelerator → GPU T4 x2
-4. فعّل **Internet** من Settings → Internet → On
-5. أضف HuggingFace token في Kaggle Secrets باسم `HF_TOKEN`
-
-## 3 — Setup ngrok
-
-1. سجل في [ngrok.com](https://ngrok.com) مجانًا
-2. نزّل ngrok وحطه في الـ PATH
-3. احصل على authtoken من ngrok dashboard
-
-في آخر الـ Kaggle Notebook، أضف:
-
-```python
-from pyngrok import ngrok
-
-ngrok.set_auth_token("YOUR_NGROK_AUTHTOKEN")
-public_url = ngrok.connect(8000).public_url
-print(f"API URL: {public_url}")
-
-# شغّل FastAPI
-uvicorn.run(app, host="0.0.0.0", port=8000)
-```
-
-## 4 — Update API URL in app.py
-
-بعد ما الـ notebook يدّيك الـ ngrok URL، حدّثه في `app.py`:
-
-```python
-# السطر 242 في app.py
-API_URL = "https://YOUR-NGROK-URL.ngrok-free.app"
-```
-
-## 5 — Install Streamlit Dependencies
-
-```bash
-pip install streamlit requests
-```
-
-## 6 — Update Image Path (Optional)
-
-لو عايز تغيّر صورة الـ background، حدّث:
-
-```python
-# السطر 21 في app.py
-img_path = r"path\to\your\image.jpg"
-```
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-# 🚀 Running the App
-
-## Step 1 — Run the Kaggle Notebook
-
-1. افتح الـ notebook على Kaggle
-2. اضغط **Run All** أو شغّل الـ cells بالترتيب
-3. الـ notebook هياخد ~10-15 دقيقة:
-   - ~3 دقائق لتنزيل NileChat-3B
-   - ~10 ثوانٍ للـ web scraping (parallel)
-   - ~40 ثانية للـ embeddings (BAAI/bge-m3)
-4. هيطلع لك ngrok URL — انسخه
-
-## Step 2 — Run the Streamlit App
-
-```bash
-streamlit run app.py
-```
-
-افتح http://localhost:8501 في الـ browser.
-
-## Step 3 — Ask Away! 🎉
-
-أمثلة على الأسئلة:
-- *"إزاي أطلّع بطاقة رقم قومي بدل فاقد؟"*
-- *"ما هي المستندات المطلوبة لاكتساب الجنسية المصرية لأبناء الأم المصرية؟"*
-- *"عايز أجدد جواز سفري، هعمل إيه؟"*
-- *"إيه متطلبات التقديم على منفذ تموينى؟"*
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-# 🎨 UI & Design
-
-### Landing Page
-- **Hero section** بعنوان "مدام عفاف" وجملة "الموظفة اللي مش هتقولك فوت علينا بكرة! 😉"
-- Chat input ينزل لمنتصف الشاشة (`translateY(-35vh)`)
-- Background image مع dark overlay (70% opacity)
-
-### Chat Interface
-- عند أول سؤال: الـ hero بيـ fade out بـ CSS animation (0.6s)
-- الـ background بيتلاشى والشاشة ترجع dark عادية
-- الرسائل RTL مع font size 1.3rem وline height 1.8
-
-### Sources Section
-- كل رد بيجي مع `📚 المصادر الرسمية` expandable
-- روابط مباشرة للمواقع الحكومية
-
-### Sidebar
-- معلومات عن مدام عفاف والخدمات المتاحة
-- تنبيه إن الأسئلة باللهجة المصرية مقبولة
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-# 🧠 Design Decisions
-
-### ليه NileChat-3B وليس GPT/Gemini؟
-
-NileChat-3B مُدرَّب خصيصًا على العربية والعامية المصرية من UBC-NLP. الهدف كان LLM يفهم اللهجة المصرية ويرد بيها بشكل طبيعي، بدل ما نستخدم LLM عام ونطلب منه "اكتب باللهجة المصرية". كمان بيشتغل مجانًا على Kaggle GPU.
-
-### ليه FAISS وليس ChromaDB/Pinecone؟
-
-FAISS in-memory أسرع وأسهل في الإعداد على Kaggle. مع 206 chunk بس، الـ in-memory store مناسب تمامًا ومفيش حاجة لـ persistent vector DB.
-
-### ليه `do_sample=False` في الـ LLM؟
-
-المشروع ده RAG للمعلومات الحكومية — المطلوب accuracy مش creativity. تعطيل الـ sampling بيضمن إن الإجابات deterministic وأقل احتمال تنحرف عن الـ context.
-
-### ليه Kaggle كـ Backend؟
-
-- GPU مجاني (T4)
-- مفيش احتياج لـ cloud deployment
-- NileChat-3B بتاخد ~6GB VRAM — مش هينفع يشتغل locally على أغلب الأجهزة
-
-### ليه `repetition_penalty=1.1`؟
-
-اللغة العربية والعامية المصرية فيها تكرار طبيعي، لكن الـ LLM بيميل لتكرار جمل بالكامل. الـ penalty الخفيف ده بيقلل التكرار من غير ما يأثر على جودة الإجابة.
-
-### ليه ngrok وليس حل تاني؟
-
-Kaggle بيمنع الـ inbound connections مباشرة. ngrok بيعمل tunnel من الـ notebook للـ internet بسهولة، ومجاني للاستخدام الأساسي.
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-# 🔭 Future Improvements
-
-- **📅 Data freshness:** جدولة الـ scraping تلقائيًا كل فترة عشان يتحدث المعلومات
-- **🏛️ More sources:** إضافة مواقع حكومية أكتر (الضرائب، السجل التجاري، وزارة العمل)
-- **💾 Persistent vector store:** حفظ FAISS index على disk أو استخدام ChromaDB عشان مش محتاج تعيد الـ embedding كل مرة
-- **🔍 Hybrid search:** دمج keyword search مع vector search لنتائج أدق
-- **📱 Mobile optimization:** تحسين الـ UI للموبايل
-- **🌍 Dialect expansion:** دعم لهجات عربية تانية (خليجي، شامي)
-- **📊 Analytics:** tracking للأسئلة الأكتر سؤالًا عشان نحسن التغطية
-- **🚀 Production deployment:** نقل الـ backend لـ Hugging Face Spaces أو cloud مع GPU
-- **🔄 Streaming responses:** استخدام streaming في الـ API عشان الإجابة تيجي progressively
-- **🧪 Evaluation:** بناء test set بأسئلة حكومية وتقييم accuracy الإجابات
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-<a id="quick-start"></a>
-
-# ⚡ Quick Start
-
-```bash
-# 1. Clone the repo
-git clone https://github.com/<your-username>/madam-afaf.git
-cd madam-afaf
-
-# 2. Install Streamlit dependencies
-pip install streamlit requests
-
-# 3. Go to Kaggle and:
-#    - Upload citizen-services-rag-prototype.ipynb
-#    - Enable GPU T4 + Internet
-#    - Add HF_TOKEN to Kaggle Secrets
-#    - Run All Cells (~15 minutes)
-#    - Copy the ngrok URL from the output
-
-# 4. Update API_URL in app.py (line 242)
-#    API_URL = "https://YOUR-NGROK-URL.ngrok-free.app"
-
-# 5. Run the Streamlit app
-streamlit run app.py
-# Opens at http://localhost:8501
-
-# 6. Ask in Egyptian Arabic! 🎉
-#    "إزاي أطلّع بطاقة رقم قومي بدل فاقد؟"
-#    "عايز أجدد جواز سفري، هعمل إيه؟"
-#    "إيه متطلبات البطاقة التموينية الذكية؟"
-```
-
-<p align="right"><a href="#top">↑ back to top</a></p>
-
----
-
-## 🔁 Complete Data Flow
-
-```text
-3 Egyptian Gov Websites
-  khadamatmisr.gov.eg (130) + enationality.moi.gov.eg (35) + msit.gov.eg (5)
-           ↓
-  BeautifulSoup4 + ThreadPoolExecutor (parallel scraping ~10s)
-           ↓
-165 structured documents {service_name, url, clean_text, source}
-           ↓
-  RecursiveCharacterTextSplitter (chunk_size=1000, overlap=150)
-           ↓
-206 LangChain chunks with metadata
-           ↓
-  BAAI/bge-m3 HuggingFaceEmbeddings (CUDA, normalize=True)
-           ↓
-FAISS Vector Store (in-memory, GPU-accelerated)
-           ↓
-  User Question → Retriever (k=4 top chunks)
-           ↓
-Arabic Prompt Template + Context → NileChat-3B (float16, T4 GPU)
-           ↓
-  FastAPI /ask endpoint → ngrok public URL
-           ↓
-Streamlit App (RTL Arabic UI, dark theme, source attribution)
-```
 
 ---
 
