@@ -18,6 +18,8 @@
 
 <br/>
 
+<img width="850" alt="Screenshot 2026-10-07 001354" src="https://github.com/user-attachments/assets/16727364-ce9f-446f-b220-181ed4f54cfc" />
+
 <p><sub><b>MODEL & EMBEDDINGS</b></sub></p>
 <p>
   <img src="https://img.shields.io/badge/NileChat--3B-UBC--NLP-FACC15?style=for-the-badge&logo=huggingface&logoColor=black" alt="NileChat-3B" />
