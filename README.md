@@ -124,15 +124,21 @@ Opens at **http://localhost:8501**
 
 # 📸 Demo
 
-### Landing Page
-The app opens with a hero section in Egyptian Arabic dialect with a centered chat input.
+### 🖥️ App Interface
 
-### Chat Interface
-After the first question, the hero fades out and the chat interface appears with RTL Arabic messages and official source links.
+<img width="1917" height="898" alt="Screenshot 2026-10-07 001354" src="https://github.com/user-attachments/assets/5eabccb1-8e93-44c8-ad46-10ea915d6142" />
 
-### Answer with Sources
-Every response includes an expandable **"📚 المصادر الرسمية"** section with direct links to the official government websites.
+---
 
+### 🎬 Demo Video
+
+> *Click the thumbnail below to watch the full demo*
+
+<a href="assets/demo.mp4">
+  <img src="assets/demo.png" alt="Watch Demo Video" width="600"/>
+</a>
+
+**▶️ [Click here to watch the demo video](assets/demo.mp4)**
 ---
 
 # 📈 Results
