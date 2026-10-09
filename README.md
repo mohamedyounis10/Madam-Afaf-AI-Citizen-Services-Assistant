@@ -134,11 +134,8 @@ Opens at **http://localhost:8501**
 
 > *Click the thumbnail below to watch the full demo*
 
-<a href="assets/demo.mp4">
-  <img src="assets/demo.png" alt="Watch Demo Video" width="600"/>
-</a>
+**▶️ [Click here to watch the demo video](https://github.com/mohamedyounis10/Madam-Afaf-AI-Citizen-Services-Assistant/blob/main/Demo%20Video.mp4)**
 
-**▶️ [Click here to watch the demo video](assets/demo.mp4)**
 ---
 
 # 📈 Results
